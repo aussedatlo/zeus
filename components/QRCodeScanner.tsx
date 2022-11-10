@@ -106,7 +106,7 @@ export default class QRCodeScanner extends React.Component<QRProps, QRState> {
                                     : RNCamera.Constants.FlashMode.off
                             }
                         >
-                            <View style={styles.overlay} />
+                            {/* <View style={styles.overlay} /> */}
                             <View style={styles.flashlightOverlay}>
                                 {this.state.torch ===
                                 RNCamera.Constants.FlashMode.torch ? (
@@ -116,16 +116,9 @@ export default class QRCodeScanner extends React.Component<QRProps, QRState> {
                                 )}
                             </View>
                             <Text style={styles.textOverlay}>{text}</Text>
-                            <View
-                                style={[
-                                    styles.contentRow,
-                                    { height: this.maskLength }
-                                ]}
-                            >
+                            <View style={styles.contentRow}>
                                 <View style={styles.overlay} />
-                                <View style={styles.scan}>
-                                    <Scan height="100%" />
-                                </View>
+                                <Scan width="80%" />
                                 <View style={styles.overlay} />
                             </View>
                             <View style={styles.overlay} />
@@ -174,23 +167,21 @@ const styles = StyleSheet.create({
     },
     overlay: {
         flex: 1,
-        backgroundColor: 'rgba(0,0,0,0.5)'
-    },
-    scan: {
-        margin: 0
+        backgroundColor: 'rgba(0,0,150,0.5)'
     },
     flashlightOverlay: {
         display: 'flex',
         flexDirection: 'row-reverse',
-        backgroundColor: 'rgba(0,0,0,0.5)',
-        paddingLeft: 20
+        backgroundColor: 'rgba(0,0,150,0.5)',
+        paddingLeft: 20,
+        paddingTop: 80
     },
     buttonOverlay: {
-        backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: 'rgba(0,150,0,0.5)',
         paddingBottom: 50
     },
     textOverlay: {
-        backgroundColor: 'rgba(0,0,0,0.5)',
+        backgroundColor: 'rgba(0,200,0,0.5)',
         color: 'white',
         paddingBottom: 60,
         textAlign: 'center',
@@ -198,10 +189,13 @@ const styles = StyleSheet.create({
         padding: 30
     },
     contentRow: {
-        flexDirection: 'row'
+        backgroundColor: 'rgba(255,0,0,0.5)',
+        flexDirection: 'row',
+        // height: '40%'
+        width: '100%'
     },
     content: {
-        flex: 1,
+        // flex: 1,
         justifyContent: 'center'
     }
 });
